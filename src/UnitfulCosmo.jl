@@ -1,4 +1,5 @@
 module UnitfulCosmo
+# based heavily on Mason Protter's NaturallyUnitful.jl
 
 using Reexport
 @reexport using Unitful
@@ -64,7 +65,7 @@ function unmpc(targetUnit, q)
     if typeof(ratio |> dimension) == Unitful.Dimensions{()}
         (ratio)targetUnit
     else
-        throw(Unitful.DimensionError)
+        throw(Unitful.DimensionError(q,targetUnit))
     end
 end
 
@@ -93,14 +94,13 @@ Convert a quantity `q` to units specified by `targetUnits` automatically inserti
 factors  of `ħ`, `c`, `G` and `kb` are required to make the conversion work.
 """
 function unplanck(targetUnit, q)
+    if unit(q) != unit(1)
+        throw(Unitful.DimensionError(q,Unitful.NoUnits))
+    end
     natTarget = planck(1targetUnit)
     natQ = planck(q)
     ratio = natQ/natTarget
-    if typeof(ratio |> dimension) == Unitful.Dimensions{()}
-        (ratio)targetUnit
-    else
-        throw(Unitful.DimensionError)
-    end
+    (ratio)targetUnit
 end
 
 

@@ -11,9 +11,9 @@ This package implements two specialized unit systems commonly found in cosmology
 ```math
 \hbar = c = G = kb = 1
 ```
-These units eliminate all dimensionality. When you convert quantities with units into this system, you make everything dimensionless by applying factors of the fundamental constants. This does mean you lose unit information, but it's also very convenient since your equations don't have any fundamental constants in them anymore. 
+These units eliminate all dimensionality. When you convert quantities with units into this system, you make everything dimensionless by multiplying powers of the fundamental physical constants. This does mean you lose unit information, but it's also very convenient since your equations don't have any fundamental constants in them anymore! The price of this simplicity is any scales which are unnatural (i.e. far away from combinations of the fundamental constants) require significands very different from 1. For example, the Hubble constant is very small, ``H_0 \sim 10^{-61}``.
 
-This unit system has some large exponents; for example, ``H_0 \sim 10^{-61}``.
+UnitfulCosmo exports a function `planck(quantity)` which converts a quantity with units into its dimensionless value in Planck units. To convert back, use `unplanck(desired_unit, value)`. 
 
 ```julia-repl
 julia> using UnitfulCosmo
@@ -21,7 +21,7 @@ julia> using UnitfulCosmo
 julia> planck(2.725u"K")
 1.9233698913253178e-32
 
-julia> unplanck(1u"K", 1.9233698913253178e-32)
+julia> unplanck(u"K", 1.9233698913253178e-32)
 2.725 K
 ```
 
@@ -33,10 +33,14 @@ Note that ``G \neq 1``. This leaves one free dimension, and this unit system mak
 
 The downside to this system is that you want to avoid using the gravitational constant ``G``. The price of using natural units and also having a nice ``H_0`` is that ``G \sim 2 \times 10^{-115} \text{Mpc}^2``, which is very cumbersome. Fortunately, in the Boltzmann equations G only appears in the form ``G\rho/c^2``, which has dimensions of ``H_0^2/c^2`` (thanks Antony Lewis).
 
+UnitfulCosmo exports a function `mpc(quantity)` which converts a quantity with units into its equivalent in powers of Mpc. To convert back, use `unmpc(desired_unit, value_in_megaparsecs)`. 
+
 ```julia-repl
 julia> mpc(70u"km/s/Mpc")
 0.00023349486663870643 Mpc^-1
 
-julia> unmpc(1u"km/s/Mpc", 0.00023349486663870643u"Mpc^-1")
+julia> unmpc(u"km/s/Mpc", 0.00023349486663870643u"Mpc^-1")
 70.0 km Mpc^-1 s^-1
 ```
+
+If you're really crazy, you can choose a different base length unit, with `mpc(q; base=u"Mpc")`.
