@@ -4,7 +4,8 @@ CurrentModule = UnitfulCosmo
 
 # UnitfulCosmo
 
-This package implements two specialized unit systems commonly found in cosmology. It is based on Mason Protter's [NaturallyUnitful.jl](https://github.com/MasonProtter/NaturallyUnitful.jl), a different natural unit system that uses eV as the base unit. It re-exports both `Unitful` and `UnitfulAstro`, so you only need to load this package.
+This package implements two specialized unit systems commonly found in cosmology. It is based on Mason Protter's [NaturallyUnitful.jl](https://github.com/MasonProtter/NaturallyUnitful.jl), a different natural unit system that uses eV as the base unit. [^1]: [Natural System of Units in General Relativity, Myers](https://www.seas.upenn.edu/~amyers/NaturalUnits.pdf)
+It re-exports both `Unitful` and `UnitfulAstro`, so you only need to load this package.
 
 ### Planck Units
 
@@ -29,9 +30,9 @@ julia> unplanck(u"K", 1.9233698913253178e-32)
 ```math
 \hbar = c = \epsilon_0 = k_B = 1
 ```
-Note that ``G \neq 1``. This leaves one free dimension, and this unit system makes Megaparsec (Mpc) the base unit. In this unit system, both length and time are measured in Mpc, whereas mass, temperature, and current are measured in inverse Mpc. These units are often used for studies of the large scale structure of the Universe. Most cosmological theory codes use these units, in particular because ``H_0`` and wavenumbers ``k`` are nice in this system, and a lot of the constants are 1. 
+Note that ``G \neq 1``. This leaves one free dimension, and this unit system makes Megaparsec (Mpc) the base unit. In this unit system, both length and time are measured in Mpc, whereas mass, temperature, and current are measured in inverse Mpc. These units are often used for studies of the large scale structure of the Universe. Many cosmological theory codes use these units, since they map naturally to observables, ``H_0`` and wavenumbers ``k`` have small significands in this system, and a lot of the constants are unity. 
 
-The downside to this system is that you want to avoid using the gravitational constant ``G``. The price of using natural units and also having a nice ``H_0`` is that ``G \sim 2 \times 10^{-115} \text{Mpc}^2``, which is very cumbersome. Fortunately, in the Boltzmann equations G only appears in the form ``G\rho/c^2``, which has dimensions of ``H_0^2/c^2`` (thanks Antony Lewis).
+The downside to this system is that you want to avoid using the gravitational constant ``G``. The price of nice constants and ``H_0`` is that ``G \sim 2 \times 10^{-115} \, \text{Mpc}^2``, which is very cumbersome. Fortunately, in the Boltzmann equations ``G`` only appears in the form ``G\rho/c^2``, which has dimensions of ``H_0^2/c^2`` (thanks Antony Lewis).
 
 UnitfulCosmo exports a function `mpc(quantity)` which converts a quantity with units into its equivalent in powers of Mpc. To convert back, use `unmpc(desired_unit, value_in_megaparsecs)`. 
 
