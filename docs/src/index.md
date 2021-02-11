@@ -30,11 +30,3 @@ julia> mpc(70u"km/s/Mpc")
 julia> unmpc(1u"km/s/Mpc", 0.00023349486663870643u"Mpc^-1")
 70.0 km Mpc^-1 s^-1
 ```
-
-
-```@index
-```
-
-```@autodocs
-Modules = [UnitfulCosmo]
-```
