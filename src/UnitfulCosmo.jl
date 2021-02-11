@@ -44,7 +44,7 @@ function _mpc(base::Unitful.FreeUnits{T, lengthdimension, U}, q) where {T, U}
     D = dimDict(q)
     (α,β,γ,δ,ϕ) = (D[:Length], D[:Mass], D[:Temperature], D[:Time], D[:Current])
     uconvert(base^(α+δ-β-γ-ϕ),
-            q * (c/ħ)^β * (kB/(c*ħ))^γ * c^δ * (c^3*ϵ0*ħ)^(-ϕ/2))
+            q * (c/ħ)^β * (kB/(c*ħ))^γ * c^δ * (c^3*ε0*ħ)^(-ϕ/2))
 end
 
 function _mpc(base::Unitful.FreeUnits{T, U, V}, q) where {T, U, V}
@@ -56,17 +56,6 @@ end
 
 Convert a quantity `q` to units specified by `targetUnits` automatically inserting whatever
 factors  of `ħ`, `c`, `ϵ₀` and `kb` are required to make the conversion work.
-
-Examples:
-
-    julia> unmpc(u"m", 5.067730759202785e6u"eV^-1")
-    1.0 m
-
-    julia> unmpc(u"m/s", 1)
-    2.99792458e8 m s^-1
-
-    julia> unmpc(u"K", 1u"eV")
-    11604.522060401006 K
 """
 function unmpc(targetUnit, q)
     natTarget = mpc(1targetUnit)
