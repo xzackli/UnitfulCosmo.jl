@@ -13,7 +13,7 @@ makedocs(;
     ),
     pages=[
         "Home" => "index.md",
-        "Index" => "api_index.md"
+        "API" => "api_index.md"
     ],
 )
 
