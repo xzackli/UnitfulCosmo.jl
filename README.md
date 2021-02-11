@@ -8,3 +8,13 @@
 This package implements two specialized unit systems commonly found in cosmology. It is based on Mason Protter's [NaturallyUnitful.jl](https://github.com/MasonProtter/NaturallyUnitful.jl), a different natural unit system that uses eV as the base unit. 
 
 For more information, read the [documentation](https://xzackli.github.io/UnitfulCosmo.jl/dev).
+
+To generate your own conversion factors, you basically solve a linear system using something like this Mathematica code,
+```
+Solve[ 
+ {c m/s == \[HBar]  (kg m^2)/
+    s^2 s == \[Epsilon]0 A^2 s^4 kg^-1 m^-3 == 
+   kb (kg m^2)/s^2 1/Kelvin == 1},
+ { kg, Kelvin, s, A} ]
+ ```
+ 

@@ -14,7 +14,7 @@ It re-exports both `Unitful` and `UnitfulAstro`, so you only need to load this p
 ```math
 \hbar = c = G = k_B = 1
 ```
-These units eliminate all dimensionality. When you convert quantities with units into this system, you make everything dimensionless by multiplying powers of the fundamental physical constants. This does mean you lose unit information, but it's also very convenient since your equations don't have any fundamental constants in them anymore! The price of this simplicity is any scales which are unnatural (i.e. far away from combinations of the fundamental constants) require significands very different from 1. For example, the Hubble constant is very small, ``H_0 \sim 10^{-61}``.
+These units eliminate all dimensionality. When you convert quantities with units into this system, you make everything dimensionless by multiplying powers of the fundamental physical constants. This does mean you lose unit information, but it's also very convenient since your equations don't have any fundamental constants in them! The price of this simplicity is any scales which are unnatural (i.e. far away from combinations of the fundamental constants) require significands very different from 1. For example, the Hubble constant is very small, ``H_0 \sim 10^{-61}``.
 
 UnitfulCosmo exports a function `planck(quantity)` which converts a quantity with units into its dimensionless value in Planck units. To convert back, use `unplanck(desired_unit, value)`. 
 
@@ -32,7 +32,7 @@ julia> unplanck(u"K", 1.9233698913253178e-32)
 ```math
 \hbar = c = \epsilon_0 = k_B = 1
 ```
-Note that ``G \neq 1``. This leaves one free dimension, and this unit system makes Megaparsec (Mpc) the base unit. In this unit system, both length and time are measured in Mpc, whereas mass, temperature, and current are measured in inverse Mpc. These units are often used for studies of the large scale structure of the Universe. Many cosmological theory codes use these units, since they map naturally to observables, the important quantities ``H_0`` and wavenumbers ``k`` have small significands in this system, and a lot of the constants are unity. 
+Note that ``G \neq 1``. This leaves one free dimension, and this unit system makes Megaparsec (Mpc) the base unit. In this unit system, both length and time are measured in Mpc, whereas mass, temperature, and current are measured in inverse Mpc. These units are often used for studies of the large scale structure of the Universe. Many cosmological theory codes use these units: they map naturally to observables, the important quantities ``H_0`` and wavenumbers ``k`` have small significands in this system, and a lot of the constants are unity. 
 
 The downside to this system is that you want to avoid using the gravitational constant ``G``. The price of nice constants and ``H_0`` is that ``G \sim 2 \times 10^{-115} \, \text{Mpc}^2``, which is very cumbersome. Fortunately, in the Boltzmann equations ``G`` only appears in the form ``G\rho/c^2``, which has dimensions of ``H_0^2/c^2`` (thanks Antony Lewis).
 
