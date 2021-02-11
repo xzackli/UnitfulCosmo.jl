@@ -26,5 +26,8 @@ end
     @test mpc(10u"A") ≈ 1.945391641e33u"Mpc^-1" rtol=1e-2
     @test unmpc(u"A", 1.945391641e33u"Mpc^-1") ≈ 10u"A" rtol=1e-2
     @test mpc(10u"kg"; base=u"kpc") ≈ 8.772e62u"kpc^-1" rtol=1e-2
+
     @test_throws Unitful.DimensionError unmpc(u"Mpc", 1u"Mpc^-1")
+    @test_throws ArgumentError("mpc(q; base)` where `base` has dimensions `𝐌` has not yet been implemented. Please use a base with dimensions of `length` and then use `unmpc` to convert to your desired units."
+        )  mpc(10u"kg"; base=u"kg")
 end

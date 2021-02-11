@@ -29,8 +29,6 @@ end
 dimDict(x::Unitful.Quantity{T}) where {T} = dimDict(dimension(x))
 dimDict(x) = Dict(:Length => 0, :Mass => 0, :Temperature => 0, :Time => 0, :Current => 0)
 
-gettypeparams(::Unitful.FreeUnits{T, U, V}) where {T, U, V} = T, U, V
-const lengthdimension = gettypeparams(u"Mpc")[2]
 
 """
     mpc(q; base=u"Mpc")
@@ -41,7 +39,7 @@ if you wanted.
 """
 mpc(q; base=u"Mpc") = _mpc(base, q)
 
-function _mpc(base::Unitful.FreeUnits{T, lengthdimension, U}, q) where {T, U}
+function _mpc(base::Unitful.FreeUnits{T, Unitful.𝐋, U}, q) where {T, U}
     D = dimDict(q)
     (α,β,γ,δ,ϕ) = (D[:Length], D[:Mass], D[:Temperature], D[:Time], D[:Current])
     uconvert(base^(α+δ-β-γ-ϕ),
@@ -49,7 +47,10 @@ function _mpc(base::Unitful.FreeUnits{T, lengthdimension, U}, q) where {T, U}
 end
 
 function _mpc(base::Unitful.FreeUnits{T, U, V}, q) where {T, U, V}
-    throw("""mpc(q; base)` where `base` has dimensions `$U` has not yet been implemented. Please use a base with dimensions of `length` and then use `unmpc` to convert to your desired units.""")
+    throw(ArgumentError(
+        """mpc(q; base)` where `base` has dimensions `$(U)` has not yet been implemented. Please use a base with dimensions of `length` and then use `unmpc` to convert to your desired units."""
+        )
+    )
 end
 
 """
