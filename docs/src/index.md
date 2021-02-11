@@ -34,7 +34,7 @@ Note that ``G \neq 1``. This leaves one free dimension, and this unit system mak
 
 The downside to this system is that you want to avoid using the gravitational constant ``G``. The price of nice constants and ``H_0`` is that ``G \sim 2 \times 10^{-115} \, \text{Mpc}^2``, which is very cumbersome. Fortunately, in the Boltzmann equations ``G`` only appears in the form ``G\rho/c^2``, which has dimensions of ``H_0^2/c^2`` (thanks Antony Lewis).
 
-UnitfulCosmo exports a function `mpc(quantity)` which converts a quantity with units into its equivalent in powers of Mpc. To convert back, use `unmpc(desired_unit, value_in_megaparsecs)`. 
+UnitfulCosmo exports a function `mpc(quantity)` which converts a quantity with units into its equivalent in powers of Mpc. To convert back, use `unmpc(desired_unit, length)`. 
 
 ```julia-repl
 julia> mpc(70u"km/s/Mpc")
