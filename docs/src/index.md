@@ -4,8 +4,10 @@ CurrentModule = UnitfulCosmo
 
 # UnitfulCosmo
 
-This package implements two specialized unit systems commonly found in cosmology. It is based on Mason Protter's [NaturallyUnitful.jl](https://github.com/MasonProtter/NaturallyUnitful.jl), a different natural unit system that uses eV as the base unit. [^1]: [Natural System of Units in General Relativity, Myers](https://www.seas.upenn.edu/~amyers/NaturalUnits.pdf)
+This package implements two specialized unit systems commonly found in cosmology. It is based on Mason Protter's [NaturallyUnitful.jl](https://github.com/MasonProtter/NaturallyUnitful.jl), a different natural unit system that uses eV as the base unit[^1]. 
 It re-exports both `Unitful` and `UnitfulAstro`, so you only need to load this package.
+
+[^1]: [Natural System of Units in General Relativity, Myers](https://www.seas.upenn.edu/~amyers/NaturalUnits.pdf)
 
 ### Planck Units
 
