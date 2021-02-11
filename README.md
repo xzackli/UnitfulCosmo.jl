@@ -5,7 +5,7 @@
 [![Build Status](https://github.com/xzackli/UnitfulCosmo.jl/workflows/CI/badge.svg)](https://github.com/xzackli/UnitfulCosmo.jl/actions)
 [![Coverage](https://codecov.io/gh/xzackli/UnitfulCosmo.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/xzackli/UnitfulCosmo.jl)
 
-This package implements two specialized unit systems commonly found in cosmology. It is based on Mason Protter's [NaturallyUnitful.jl](https://github.com/MasonProtter/NaturallyUnitful.jl), another natural unit system that uses eV as the base unit. 
+This package implements two specialized unit systems commonly found in cosmology. It is based on Mason Protter's [NaturallyUnitful.jl](https://github.com/MasonProtter/NaturallyUnitful.jl), another natural unit system that uses eV as the base unit. It re-exports both `Unitful` and `UnitfulAstro`, so you only need to `using UnitfulCosmo`.
 
 ### Planck Units
 This sets `ħ = c = G = kb = 1`, eliminating all dimensionality from the unit system. When you convert quantities with units into this system, you make everything dimensionless by applying factors of the fundamental constants. This does mean you lose unit information, but it's also very convenient since your equations don't have any fundamental constants in them anymore. 
