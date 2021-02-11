@@ -4,12 +4,12 @@ CurrentModule = UnitfulCosmo
 
 # UnitfulCosmo
 
-This package implements two specialized unit systems commonly found in cosmology. It is based on Mason Protter's [NaturallyUnitful.jl](https://github.com/MasonProtter/NaturallyUnitful.jl), another natural unit system that uses eV as the base unit. It re-exports both `Unitful` and `UnitfulAstro`, so you only need to `using UnitfulCosmo`.
+This package implements two specialized unit systems commonly found in cosmology. It is based on Mason Protter's [NaturallyUnitful.jl](https://github.com/MasonProtter/NaturallyUnitful.jl), a different natural unit system that uses eV as the base unit. It re-exports both `Unitful` and `UnitfulAstro`, so you only need to load this package.
 
 ### Planck Units
 
 ```math
-\hbar = c = G = kb = 1
+\hbar = c = G = k_B = 1
 ```
 These units eliminate all dimensionality. When you convert quantities with units into this system, you make everything dimensionless by multiplying powers of the fundamental physical constants. This does mean you lose unit information, but it's also very convenient since your equations don't have any fundamental constants in them anymore! The price of this simplicity is any scales which are unnatural (i.e. far away from combinations of the fundamental constants) require significands very different from 1. For example, the Hubble constant is very small, ``H_0 \sim 10^{-61}``.
 

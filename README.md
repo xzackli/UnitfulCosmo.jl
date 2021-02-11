@@ -5,6 +5,6 @@
 [![Build Status](https://github.com/xzackli/UnitfulCosmo.jl/workflows/CI/badge.svg)](https://github.com/xzackli/UnitfulCosmo.jl/actions)
 [![Coverage](https://codecov.io/gh/xzackli/UnitfulCosmo.jl/branch/main/graph/badge.svg?token=JBbhog9XqH)](https://codecov.io/gh/xzackli/UnitfulCosmo.jl)
 
-This package implements two specialized unit systems commonly found in cosmology. It is based on Mason Protter's [NaturallyUnitful.jl](https://github.com/MasonProtter/NaturallyUnitful.jl), another natural unit system that uses eV as the base unit. 
+This package implements two specialized unit systems commonly found in cosmology. It is based on Mason Protter's [NaturallyUnitful.jl](https://github.com/MasonProtter/NaturallyUnitful.jl), a different natural unit system that uses eV as the base unit. 
 
 For more information, read the [documentation](https://xzackli.github.io/UnitfulCosmo.jl/dev).
